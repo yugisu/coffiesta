@@ -1,3 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico|Roboto&display=swap&subset=cyrillic');
+
+:root {
+  --clr-primary: #725548;
+  --clr-light-primary: #e9daca;
+  --clr-dark-primary: #2a1f1b;
+  --clr-accent: #40696e;
+  --clr-black: #0f1108;
+}
+
+html {
+  color: var(--clr-black);
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+}
+
 *,
 *::before,
 *::after {
