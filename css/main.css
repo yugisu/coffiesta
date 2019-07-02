@@ -44,7 +44,7 @@ ol {
 }
 
 img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
 }
 
@@ -61,7 +61,6 @@ body {
   width: 100%;
 
   display: grid;
-  gap: 1rem;
 }
 
 .logo {
@@ -121,11 +120,115 @@ body {
 .content {
   grid-area: content;
   display: grid;
-  gap: 1rem;
 }
 
 .main {
   grid-area: main;
+}
+
+.main__title {
+  margin-bottom: 1rem;
+
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.posts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.post {
+  max-width: 500px;
+
+  padding-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+
+  background: #ffffff;
+  box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: box-shadow 0.16s;
+}
+
+.post:hover {
+  box-shadow: 0 4px 8px -1px rgba(0, 0, 0, 0.3);
+}
+
+.post__cover {
+  flex: 1 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.post__cover > img {
+  height: 100%;
+  object-fit: cover;
+
+  transition: transform 0.16s;
+}
+
+.post:hover img {
+  transform: scale(1.02, 1.02);
+}
+
+.post__content {
+  padding: 1rem;
+}
+
+.post__title {
+  position: relative;
+  text-transform: capitalize;
+}
+
+.post__title:hover {
+  background-color: var(--clr-light-primary);
+}
+
+.post__tooltip {
+  margin-top: 0.1rem;
+
+  display: flex;
+  justify-content: space-between;
+
+  color: var(--clr-primary);
+  opacity: 0.7;
+}
+
+.post__description {
+  position: relative;
+  margin-top: 1rem;
+
+  margin-right: -1rem;
+  padding-right: 1rem;
+  line-height: 1.2rem;
+  max-height: 2.4rem;
+
+  overflow: hidden;
+}
+
+.post__description::before {
+  display: block;
+  content: 'read';
+  position: absolute;
+  bottom: 0rem;
+  right: 1rem;
+
+  height: 1.2rem;
+  width: 4rem;
+
+  padding: 0.2rem 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  color: var(--clr-accent);
+  font-weight: bold;
+  background: linear-gradient(to left, #ffffff 70%, rgba(0, 0, 0, 0));
 }
 
 .info {
@@ -183,10 +286,6 @@ aside {
   background: lightblue;
 }
 
-main {
-  background: sandybrown;
-}
-
 /* Mobile */
 @media screen and (max-width: 768px) {
 
@@ -199,6 +298,7 @@ main {
       'header' auto
       'content' 1fr
       'footer' auto;
+    gap: 1rem;
   }
 
   .header {
@@ -223,6 +323,7 @@ main {
   }
 
   .header__menu {
+    z-index: 100;
     justify-content: flex-start;
     align-items: center;
   }
@@ -278,6 +379,7 @@ main {
       'info' auto
       'main' 1fr
       'comments' auto;
+    gap: 1rem;
   }
 
   .footer {
@@ -288,10 +390,13 @@ main {
       1fr 1fr;
   }
 
-  .main,
   .info,
   .comments {
-    padding: 1rem;
+    min-height: 4rem;
+  }
+
+  .main {
+    padding: 0 1rem;
   }
 }
 
@@ -308,6 +413,7 @@ main {
       '.....  content .....' 1fr
       'footer footer  footer' auto /
       1fr minmax(600px, 1200px) 1fr;
+    gap: 2rem;
   }
 
   .header {
@@ -366,6 +472,7 @@ main {
       'main info' 1fr
       'main comments' 1fr /
       1fr 200px;
+    gap: 2rem;
   }
 
   .footer {
