@@ -9,6 +9,8 @@
 }
 
 html {
+  box-sizing: border-box;
+
   color: var(--clr-black);
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
@@ -17,12 +19,39 @@ html {
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+  box-sizing: inherit;
 }
 
-body {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
   margin: 0;
   padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--clr-black);
+}
+
+a:hover {
+  color: var(--clr-primary);
 }
 
 .header {
