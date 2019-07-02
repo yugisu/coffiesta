@@ -54,8 +54,19 @@ a:hover {
   color: var(--clr-primary);
 }
 
-.header {
+body {
+  min-height: calc(100vh + 2rem);
   width: 100%;
+
+  display: grid;
+  gap: 1rem;
+}
+
+.header {
+  grid-area: header;
+
+  width: 100%;
+  height: fit-content;
 
   display: grid;
 
@@ -91,8 +102,49 @@ a:hover {
   text-decoration: none;
 }
 
+.content {
+  grid-area: content;
+  display: grid;
+  gap: 1rem;
+}
+
+.main {
+  grid-area: main;
+}
+
+.info {
+  grid-area: info;
+}
+
+.comments {
+  grid-area: comments;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+aside {
+  background: lightblue;
+}
+
+main {
+  background: sandybrown;
+}
+
+footer {
+  background: salmon;
+}
+
 /* Mobile */
 @media screen and (max-width: 768px) {
+
+  body {
+    grid:
+      'header' auto
+      'content' 1fr
+      'footer' auto;
+  }
 
   .header {
     padding: 0.5rem 1.5rem;
@@ -121,7 +173,7 @@ a:hover {
     top: 0;
     left: 0;
     height: 100%;
-    width: 60vw;
+    min-width: 60vw;
 
     padding: 2rem 1rem;
     display: grid;
@@ -161,13 +213,35 @@ a:hover {
     align-items: center;
     height: 3rem;
   }
+
+  .content {
+    grid:
+      'info' auto
+      'main' 1fr
+      'comments' auto;
+  }
+
+  .main,
+  .info,
+  .comments,
+  .footer {
+    padding: 1rem;
+  }
 }
 
 /* Desktop */
 @media screen and (min-width: 769px) {
 
+  body {
+    grid:
+      'header header  header' auto
+      '.....  content .....' 1fr
+      'footer footer  footer' auto /
+      1fr minmax(600px, 1200px) 1fr;
+  }
+
   .header {
-    padding: 1rem 5rem;
+    padding: 1rem 2rem;
     grid:
       'logo ... socials' 1fr
       'logo ... menu' 1fr /
@@ -214,5 +288,18 @@ a:hover {
     display: grid;
     grid-auto-flow: column;
     gap: 0.5rem;
+  }
+
+  .content {
+    max-width: 1200px;
+
+    grid:
+      'main info' 1fr
+      'main comments' 1fr /
+      1fr 200px;
+  }
+
+  .footer {
+    height: 2rem;
   }
 }
